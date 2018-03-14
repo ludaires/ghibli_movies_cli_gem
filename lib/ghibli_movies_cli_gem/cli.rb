@@ -30,7 +30,6 @@ class GhibliMoviesCliGem::CLI
             # @films[0..10].each do |f| 
         #     puts "#{f.title}"
         # end
-         end
         
     end
 

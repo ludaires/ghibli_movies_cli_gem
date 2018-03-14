@@ -1,2 +1,8 @@
 #!/usr/bin/env ruby
 
+require "bundler/setup"
+require "irb"
+require "ghibli_movies_cli_gem"
+
+GhibliMoviesCliGem::CLI.new.start
+
