@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.5"
   spec.add_development_dependency('pry', '~> 0')
   spec.add_development_dependency('pry-doc', '~> 0')
+  spec.add_development_dependency('pry-byebug', '~> 3.6.0')
 
   spec.add_dependency('rest-client', '~> 2.0.2')
   spec.add_dependency('json', '~> 2.1.0')
