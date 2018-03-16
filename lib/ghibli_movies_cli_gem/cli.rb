@@ -1,6 +1,7 @@
 class GhibliMoviesCliGem::CLI
 
     def start
+        @films = GhibliMoviesCliGem::API.get_films
         puts "n/"
         puts "Welcome to Studio Ghibli Universe!"
         puts "n/"
@@ -20,8 +21,10 @@ class GhibliMoviesCliGem::CLI
         case input
             when "1"
                 puts "1. Top 10 movies by Rottten Tomato."
+                # puts films.score
             when "2"
                 puts "2. List of all movies"
+                # puts films.all
             when "3"
                 puts "3. Exit"
             else
