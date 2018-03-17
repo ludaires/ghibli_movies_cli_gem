@@ -2,9 +2,9 @@ class GhibliMoviesCliGem::CLI
 
     def start
         @films = GhibliMoviesCliGem::API.get_films
-        puts "n/"
+        puts ""
         puts "Welcome to Studio Ghibli Universe!"
-        puts "n/"
+        puts ""
         menu
     end
 
@@ -20,28 +20,32 @@ class GhibliMoviesCliGem::CLI
     
         case input
             when "1"
-                puts "1. Top 10 movies by Rottten Tomato."
-                # puts films.score
+                list_by_score
             when "2"
-                puts "------ You choose number two ------"
+                puts "------ Number two: List of all movies ------"
                 puts ""
-                puts "2. List of all movies"
-                puts ""
-                count = 0
-                @films.each do |f|
-                    count=count+1
-                    puts "#{count}. #{f.title}"
-                end
-                
+                list_all_movies    
             when "3"
-                puts "3. Exit"
+                exit
             else
                 puts "You just making it up!"
-            end
-            # @films[0..10].each do |f| 
-        #     puts "#{f.title}"
-        # end
-        
+        end
     end
+
+    def list_all_movies
+        @films.each.with_index(1) do |film, index|
+            puts "#{index}. #{film.title}"
+        end
+    end
+
+    def list_by_score
+        list_films_score = Array.new(){Hash.new}
+        binding.pry
+        @films.each do |film|
+            list_films_score[0]["#{film.score}"] = "#{film.title}"
+        end
+        list_films_score
+    end
+
 
 end
