@@ -23,8 +23,16 @@ class GhibliMoviesCliGem::CLI
                 puts "1. Top 10 movies by Rottten Tomato."
                 # puts films.score
             when "2"
+                puts "------ You choose number two ------"
+                puts ""
                 puts "2. List of all movies"
-                # puts films.all
+                puts ""
+                count = 0
+                @films.each do |f|
+                    count=count+1
+                    puts "#{count}. #{f.title}"
+                end
+                
             when "3"
                 puts "3. Exit"
             else
