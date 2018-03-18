@@ -20,6 +20,7 @@ class GhibliMoviesCliGem::CLI
     
         case input
             when "1"
+                # binding.pry
                 list_by_score
             when "2"
                 puts "------ Number two: List of all movies ------"
@@ -39,13 +40,12 @@ class GhibliMoviesCliGem::CLI
     end
 
     def list_by_score
-        list_films_score = Array.new(){Hash.new}
-        binding.pry
+        list_films_score = Hash.new
+        # binding.pry
         @films.each do |film|
-            list_films_score[0]["#{film.score}"] = "#{film.title}"
+            list_films_score[film.score] = film.title
         end
-        list_films_score
+        list_descedent = list_films_score.sort.reverse 
     end
-
 
 end
