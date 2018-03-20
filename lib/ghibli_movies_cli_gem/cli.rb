@@ -30,7 +30,7 @@ class GhibliMoviesCliGem::CLI
                 list_movies(2) 
                 movie_menu
             when "3"
-                exit
+                goodbye
             else
                 puts "You just making it up!"
         end
@@ -51,11 +51,6 @@ class GhibliMoviesCliGem::CLI
     end
 
     def list_movies(user_input)        
-        # films = @films.sort_by do |f|
-        #     f.score.to_i
-        # end
-        # films.reverse!
-
         films = movies_sort
 
         if user_input == 1
@@ -74,12 +69,7 @@ class GhibliMoviesCliGem::CLI
 
         puts "Choose movie number to get more information about it."
         input = gets.strip
-
-        films = @films.sort_by do |f|
-            f.score.to_i
-        end
-
-        films.reverse!
+        films = movies_sort
         film_detail = films[input.to_i - 1]
         
         puts "-----#{film_detail.title}------"
@@ -97,7 +87,14 @@ class GhibliMoviesCliGem::CLI
         puts ""
         puts "Description:"
         puts film_detail.description
+        puts ""
+        main_menu
     end
-        
+
+    def goodbye
+        puts "Bye, bye. Hope to see you soon"
+        exit
+    end
+    
     
 end
