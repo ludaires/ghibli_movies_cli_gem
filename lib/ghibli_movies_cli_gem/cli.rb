@@ -22,13 +22,13 @@ class GhibliMoviesCliGem::CLI
             when "1"
                 puts "------ Number One: List of all movies ------"
                 puts ""
-                list_by_score(1)
+                list_movies(1)
                 movie_menu
             when "2"
                 puts "------ Number Two: List of all movies ------"
                 puts ""
-                list_by_score(2) 
-                  
+                list_movies(2) 
+                movie_menu
             when "3"
                 exit
             else
@@ -36,22 +36,38 @@ class GhibliMoviesCliGem::CLI
         end
     end
 
-    def list_all_movies
-        @films.each.with_index(1) do |film, index|
-            puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
-        end
-    end
+    # def list_all_movies
+    #     @films.each.with_index(1) do |film, index|
+    #         puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
+    #     end
+    # end
 
-    def list_by_score(user_input)        
+    # Transforme this method to be the only one to list movies"
+
+    def movies_sort
         films = @films.sort_by do |f|
             f.score.to_i
+        end.reverse!
+    end
+
+    def list_movies(user_input)        
+        # films = @films.sort_by do |f|
+        #     f.score.to_i
+        # end
+        # films.reverse!
+
+        films = movies_sort
+
+        if user_input == 1
+            films.first(10).each.with_index(1) do |film, index|
+                puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
+            end       
+        elsif user_input == 2
+            films.each.with_index(1) do |film, index|
+                puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
+            end
         end
-        films.reverse!
 
-
-        films.first(10).each.with_index(1) do |film, index|
-            puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
-        end        
     end
 
     def movie_menu
@@ -67,6 +83,8 @@ class GhibliMoviesCliGem::CLI
         film_detail = films[input.to_i - 1]
         
         puts "-----#{film_detail.title}------"
+        puts "-----Score:#{film_detail.score}------"
+
         puts ""
         puts "Director:"
         puts film_detail.director
