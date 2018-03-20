@@ -4,10 +4,6 @@ class GhibliMoviesCliGem::FILM
 
     @@all = []
 
-    def initialize
-        @@all << self
-    end
-
     def self.new_from_json(film)
         film_info = self.new
         film_info.id = film["id"]
@@ -23,6 +19,11 @@ class GhibliMoviesCliGem::FILM
     def self.all
         @@all
     end
+
+    
+
+
+
 
 end
 
