@@ -32,8 +32,9 @@ class GhibliMoviesCliGem::CLI
             when "3"
                 goodbye
             else
-                puts "You just making it up!"
-        end
+                puts "You just making it up! Pleaes, choose a number 1 - 3 according to the menu option."
+                main_menu
+            end
     end
 
     # def list_all_movies
@@ -88,8 +89,24 @@ class GhibliMoviesCliGem::CLI
         puts "Description:"
         puts film_detail.description
         puts ""
-        main_menu
+
+        more_interaction
+
     end
+
+    def more_interaction
+        puts "Do you like to see another movie information? Type Y to Yes, N to No."
+        input = gets.strip.to_s.downcase
+
+        if input == "y"
+            list_movies(2)
+            movie_menu
+        else
+            goodbye
+        end
+    end
+
+
 
     def goodbye
         puts "Bye, bye. Hope to see you soon"
