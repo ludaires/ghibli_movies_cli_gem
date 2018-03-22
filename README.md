@@ -1,15 +1,21 @@
 # GhibliMoviesCliGem
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ghibli_movies_cli_gem`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your Ghibli Movies! This is a Command Line Interface (CLI) based gem that gathers information from all movies from Studio Ghibli API.  
 
-TODO: Delete this and the text above, and describe your gem
+
+In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ghibli_movies_cli_gem`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+To install from git use these instructions:
+
+1 - Clone repo
+2 - 'cd'into repo
+3 - 'bundle install'
+4 - run 'ruby bin/ghibli_movies
 
 ```ruby
-gem 'ghibli_movies_cli_gem'
+#gem 'ghibli_movies_cli_gem'
 ```
 
 And then execute:
@@ -22,7 +28,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+- The user is presentend with a menu with 3 option to interact with
+
+Typing 1: 
+    1 - To see the top 10 movies from Studio Ghibli scored by Rotten Tomatos.
+    After list the movies, user will choose to see more information about the movies or go back to the main menu.
+Typing 2: 
+    2 - To see the list of all movies from Studio Ghibli. 
+    Seeing the list of all movies, user can choose to see more information about some especif movie or go back to the main menu.
+Typing 3
+    3 - Exit from the program.
 
 ## Development
 
