@@ -1,22 +1,23 @@
 class GhibliMoviesCliGem::CLI
 
     def start
-        @films = GhibliMoviesCliGem::API.get_films
+        GhibliMoviesCliGem::API.get_films
         puts ""
         puts "Welcome to Studio Ghibli Universe!"
         puts ""
         main_menu
+        goodbye
     end
 
     def main_menu
-        puts "------ What do you like to see? Choose a number from the menu options------"
+        puts "------ What do you like to see? Please choose a number ------"
         puts ""
         puts "1. Top 10 movies by Rottten Tomato."
         puts "2. List of all movies"
         puts "3. Exit"
         puts ""
     
-        input = gets.strip.to_s.downcase
+        input = gets.strip
     
         case input
             when "1"
@@ -34,48 +35,28 @@ class GhibliMoviesCliGem::CLI
             when "3"
                 goodbye
             else
-                puts "You just making it up! Pleaes, choose a number 1 - 3 according to the menu option."
-                puts ""
+                error_message
                 main_menu
             end
     end
 
-  #This method sort the movies by score.
-    # def movies_sort
-    #     films = @films.sort_by do |f|
-    #         f.score.to_i
-    #     end.reverse!
-    # end
-
     #This method list all movies depending on user criteria. 
     def list_movies(user_input)        
-        # films = movies_sort
-        films = GhibliMoviesCliGem::FILM.movies_sort
-
-        if user_input == 1
-            # films.first(10).each.with_index(1) do |film, index|
-            #     puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
-            # end     
+        if user_input == 1    
             GhibliMoviesCliGem::FILM.list_ten_films
         elsif user_input == 2
-            # films.each.with_index(1) do |film, index|
-            #     puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
-            # end
             GhibliMoviesCliGem::FILM.list_all_films
         end
-
     end
 
+    # Show detailed information about the choose movie
     def movie_menu
-
         puts "Choose movie number to get more information about it."
         input = gets.strip.to_i
-        # films = movies_sort
         films = GhibliMoviesCliGem::FILM.movies_sort
 
         if input < 1 || input > 20
-            puts "You just making it up! Please, choose a valid number (1 to 20) according to the menu option."
-            puts ""
+            error_message
             movie_menu
         else
             film_detail = films[input.to_i - 1]
@@ -113,10 +94,15 @@ class GhibliMoviesCliGem::CLI
         elsif input == "n" || input == "no"
             goodbye
         else
-            puts "You just making it up! Please, choose a valid number (1 to 3) according to the menu option."
-            puts ""
-            main_menu
+            error_message
+            more_interaction
         end
+    end
+
+    def error_message
+        puts ""
+        puts "You just making it up! Please, choose according to the menu option."
+        puts ""
     end
 
     def goodbye
@@ -125,21 +111,5 @@ class GhibliMoviesCliGem::CLI
     end
     
     #TODO: Implement a valid input method. 
-
-    # def input_valid!(input)
-    #     # it's valid if the input is a number
-    #     input.to_i
-    #     binding.pry
-    #     case input
-    #         when [0..20] This is not going to work as string.
-    #             main_menu
-    #         when "exit"
-    #             goodbye
-    #         else
-    #             puts "You just making it up! Please, choose a valid number (1 to 20) according to the menu option."
-    #     end
-    # end
-
-
     
 end
