@@ -22,3 +22,7 @@ tasks:
     resolve duplicates in self.all at module film
 
 ---------------------------------------------------------------------------------------------------------
+march, 22
+
+    tasks :
+        Implement invalid options

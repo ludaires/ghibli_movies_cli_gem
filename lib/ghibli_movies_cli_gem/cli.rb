@@ -35,29 +35,33 @@ class GhibliMoviesCliGem::CLI
                 goodbye
             else
                 puts "You just making it up! Pleaes, choose a number 1 - 3 according to the menu option."
+                puts ""
                 main_menu
             end
     end
 
   #This method sort the movies by score.
-    def movies_sort
-        films = @films.sort_by do |f|
-            f.score.to_i
-        end.reverse!
-    end
+    # def movies_sort
+    #     films = @films.sort_by do |f|
+    #         f.score.to_i
+    #     end.reverse!
+    # end
 
-    #This method list all movies depending on user creteria. 
+    #This method list all movies depending on user criteria. 
     def list_movies(user_input)        
-        films = movies_sort
+        # films = movies_sort
+        films = GhibliMoviesCliGem::FILM.movies_sort
 
         if user_input == 1
-            films.first(10).each.with_index(1) do |film, index|
-                puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
-            end       
+            # films.first(10).each.with_index(1) do |film, index|
+            #     puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
+            # end     
+            GhibliMoviesCliGem::FILM.list_ten_films
         elsif user_input == 2
-            films.each.with_index(1) do |film, index|
-                puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
-            end
+            # films.each.with_index(1) do |film, index|
+            #     puts "#{index.to_s.rjust(2, "0")}. #{film.title} - Score #{film.score}"
+            # end
+            GhibliMoviesCliGem::FILM.list_all_films
         end
 
     end
@@ -66,7 +70,8 @@ class GhibliMoviesCliGem::CLI
 
         puts "Choose movie number to get more information about it."
         input = gets.strip.to_i
-        films = movies_sort
+        # films = movies_sort
+        films = GhibliMoviesCliGem::FILM.movies_sort
 
         if input < 1 || input > 20
             puts "You just making it up! Please, choose a valid number (1 to 20) according to the menu option."
@@ -109,6 +114,7 @@ class GhibliMoviesCliGem::CLI
             goodbye
         else
             puts "You just making it up! Please, choose a valid number (1 to 3) according to the menu option."
+            puts ""
             main_menu
         end
     end
